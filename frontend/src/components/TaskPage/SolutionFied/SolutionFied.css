@@ -1,0 +1,69 @@
+@font-face {
+    font-family: 'jetbrains_monoregular';
+    src: url('JetBrainsMono-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.SendSol-wrapper {
+    height: 80vh;
+    width: 50vw;
+}
+
+.SendSol-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    background-color: #282c34;
+    width: 100%;
+}
+
+.SendSol-header p {
+    margin-left: 10px;
+}
+
+.Solution-textarea {
+    font-family: 'jetbrains_monoregular', monospace;
+}
+
+.Lang-select {
+    align-content: center;
+    font-size: 1.4em;
+    margin: 10px;
+    height: 40px;
+    width: 200px;
+    border: none;
+    border-radius: 5px;
+}
+
+.SendSol-footer {
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.SendSol-footer button {
+    font-size: 1.2em;
+    margin: 10px 0 0 5px;
+    height: 30px;
+    width: 100px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.SendSol-button {
+    background-color: #bb432c;
+}
+
+.SendSol-button:hover {
+    color: #232323;
+    background-color: #ecb613;
+}
+
+.SendSol-button:active {
+    border: none;
+}

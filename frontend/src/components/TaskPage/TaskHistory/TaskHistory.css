@@ -1,0 +1,66 @@
+.History {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 100%;
+    font-family: 'jetbrains_monoregular', monospace;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.History p {
+    color: #ffffff;
+}
+
+.History-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: #ffffff;
+}
+
+.History-item p {
+    margin: 0 0 10px;
+    font-size: 0.9rem;
+}
+
+.History-item p.Task-id {
+    align-self: flex-end;
+    font-size: 0.6rem;
+    margin: 0;
+    color: #505868;
+}
+
+.History-item-header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.History-item hr {
+    border: 1px solid #3d4049;
+    width: 100%;
+    margin: 15px 0;
+}
+
+.History-item textarea {
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    align-self: center;
+    background-color: #141414;
+    color: #ffffff;
+    width: 100%;
+    min-height: 15vh;
+    resize: none;
+    z-index: 900;
+}
+
+.Border-correct {
+    border: 1px solid #67b04b;
+}
+
+.Border-incorrect {
+    border: 1px solid #c05c48;
+}

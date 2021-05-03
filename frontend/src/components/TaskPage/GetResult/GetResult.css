@@ -1,0 +1,38 @@
+.Progress {
+    width: 100%;
+}
+
+.Results {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    justify-items: center;
+    align-items: center;
+}
+
+.Results-item {
+    font-size: 0.9rem;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.Results-item-bold {
+    font-weight: bold;
+}
+
+.Results hr {
+    border: 1px solid #3d4049;
+    width: 100%;
+    margin: 5px 0;
+}
+
+.Correct {
+    color: #67b04b;
+}
+
+.Incorrect {
+    color: #c05c48;
+}

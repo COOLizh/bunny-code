@@ -1,0 +1,101 @@
+version: "3.8"
+services:
+  socat:
+    image: alpine/socat
+    container_name: socat
+    restart: on-failure
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    expose:
+      - 2375
+    # for remote access use
+    #ports:
+    #- 2375:2375
+    command:
+      - TCP-LISTEN:2375,fork
+      - UNIX-CONNECT:/var/run/docker.sock
+    networks:
+      - brg
+
+  postgres-goapp:
+    image: postgres:13-alpine
+    container_name: postgres
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+      - DATABASE_HOST=${DB_PORT}
+      - DATABASE_URL=${DATABASE_URL}
+    ports:
+      - ${DB_PORT}:${DB_PORT}
+    volumes:
+      - database_postgres:/var/lib/postgresql/data
+    networks:
+      - brg
+
+  migrations:
+    image: migrate/migrate
+    container_name: migration
+    networks:
+      - brg
+    volumes:
+      - ../task_repo/migrations:/migrations
+    command: ["-path", "migrations", "-database", "${DATABASE_URL}", "up"]
+    depends_on:
+      - postgres-goapp
+    restart: on-failure
+
+  executioner:
+    build:
+      context: ../executioner
+      dockerfile: Dockerfile
+    container_name: executioner
+    image: executioner
+    env_file: ../executioner/.env
+    ports:
+      - ${EXECUTIONER_PORT}:${EXECUTIONER_PORT}
+    networks:
+      - brg
+    depends_on:
+      - socat
+    restart: on-failure
+
+  taskapp:
+    build:
+      context: ../task_repo
+      dockerfile: Dockerfile
+    container_name: taskapp
+    image: taskapp
+    env_file:
+    - ../task_repo/default.env
+    - ../task_repo/.env
+
+    ports:
+      - ${API_PORT}:${API_PORT}
+    depends_on:
+      - postgres-goapp
+      - migrations
+      - executioner
+    networks:
+      - brg
+    restart: on-failure
+
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    container_name: frontend
+    image: frontend
+    env_file: ../frontend/.env
+    ports:
+      - ${FRONTEND_PORT}:${NGINX_PORT}
+    depends_on:
+      - taskapp
+    restart: on-failure
+
+volumes:
+  database_postgres:
+
+networks:
+  brg:
+    driver: bridge

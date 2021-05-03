@@ -1,0 +1,54 @@
+.Auth-form {
+    margin-top: 70px;
+}
+
+.form-group input {
+    font-size: 1.3em;
+    padding: 5px;
+    margin: 5px;
+    color: #ffffff;
+    width: 30vw;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #3c3d3f;
+    background-color: #282c34;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-group button {
+    color: #ffffff;
+    font-size: 1.2em;
+    margin: 5px;
+    width: 14vw;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #3c3d3f;
+    -webkit-appearance: none;
+}
+
+.form-group button a {
+    text-decoration: none !important;
+}
+
+.form-group button a:visited {
+    color: #ffffff;
+}
+
+.form-group button:hover {
+    background-color: #282c34;
+}
+
+.Signup {
+    background-color: #bb432c;
+}
+
+.Cancel {
+    background-color: #282c34;
+    text-decoration: none;
+}

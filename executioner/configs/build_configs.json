@@ -1,0 +1,18 @@
+{
+    "c++":{
+        "build_commands":"g++ -o",
+        "file_extension":".cpp",
+        "container_name":"cpp",
+        "container_bin_path":"/cpp/bin/",
+        "container_src_path":"/cpp/src/",
+        "docker_file_path":"./pkg/dockerapi/dockerfiles/Dockerfile.cpp"
+    },
+    "golang":{
+        "build_commands":"go build -o",
+        "file_extension":".go",
+        "container_name":"golang",
+        "container_bin_path":"/go/bin/",
+        "container_src_path":"/go/src/",
+        "docker_file_path":"./pkg/dockerapi/dockerfiles/Dockerfile.golang"
+    }
+}
